@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin123
     ports:
-      - "6666:5432"
+      - "5608:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # ✅ Add this line
@@ -19,14 +19,14 @@ services:
       context: ./Backend
     container_name: onboarding_backend21
     ports:
-      - "3339:3339"
+      - "3608:3608"
     environment:
       DB_USER: postgres
       DB_PASSWORD: admin123
       DB_HOST: postgres
       DB_PORT: 5432
       DB_NAME: onboarding_system
-      PORT: 3339
+      PORT: 3608
     depends_on:
       - postgres
 
@@ -35,7 +35,7 @@ services:
       context: ./Employee-side
     container_name: onboarding_employee_side21
     ports:
-      - "6660:80"
+      - "8615:80"
     depends_on:
       - backend
 
@@ -44,7 +44,7 @@ services:
       context: ./HR-side
     container_name: onboarding_hr_side21
     ports:
-      - "6661:80"
+      - "8616:80"
     depends_on:
       - backend
 
